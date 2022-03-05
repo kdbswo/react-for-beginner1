@@ -19,8 +19,24 @@ function App() {
   }, []);
   console.log(movies);
   return <div>
-    {loading ? <h1>Loading...</h1> : null}
+    {loading ?
+     <h1>Loading...</h1>
+      : 
+      <div>
+        {movies.map(movies => (
+          <div key={movies.id}>
+            <img src={movies.medium_cover_image} />
+            <h2>{movies.title}</h2>
+            <p>{movies.summary}</p>
+            <ul>
+              {movies.genres.map((g)=>(
+                <li key={g}>{g}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>}
   </div>;
-}
+};
 
 export default App;
